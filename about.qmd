@@ -1,5 +1,6 @@
 ---
 title: "About Me"
+pagetitle: "About — Gujuri Alekha"
 about:
   template: solana
   links:
@@ -20,20 +21,49 @@ Currently, I work as a **Data Scientist Associate at Trinity Mobility**, designi
 
 ---
 
+::: {.about-card}
 ### 🛠️ Technical Competencies
 
-- **Machine Learning & Forecasting**: Time Series Modeling (ARIMA, SARIMA, Prophet, STL), Classification, Regression, scikit-learn, statsmodels
-- **Data Engineering & Big Data**: Pandas, NumPy, PySpark, SQL, Data Pipelines
-- **MLOps & Backend**: FastAPI, Flask, MLflow, Docker, CI/CD with GitHub Actions
-- **Languages**: Python, C++, Java, SQL
+::: {style="display: flex; flex-wrap: wrap; gap: 0.35rem; margin-top: 0.5rem;"}
+[Time Series Modeling]{.skill-tag}
+[ARIMA / SARIMA]{.skill-tag}
+[Prophet]{.skill-tag}
+[STL Decomposition]{.skill-tag}
+[Classification]{.skill-tag}
+[Regression]{.skill-tag}
+[scikit-learn]{.skill-tag}
+[statsmodels]{.skill-tag}
+[Pandas]{.skill-tag .violet}
+[NumPy]{.skill-tag .violet}
+[PySpark]{.skill-tag .violet}
+[SQL]{.skill-tag .violet}
+[FastAPI]{.skill-tag}
+[Flask]{.skill-tag}
+[MLflow]{.skill-tag}
+[Docker]{.skill-tag}
+[CI/CD]{.skill-tag}
+[Python]{.skill-tag .violet}
+[C++]{.skill-tag .violet}
+[Java]{.skill-tag .violet}
+:::
 
----
+:::
 
+::: {.about-card}
+### 💼 Experience
+
+**Data Scientist Associate** — Trinity Mobility  
+Designing intelligent IoT data pipelines, energy demand simulation engines, and smart municipal alert services. Building production-grade machine learning solutions for real-world infrastructure.
+:::
+
+::: {.about-card}
 ### 📖 About AI Chronicles
 
 This repository and blog is my open technical journal where I document:
+
 - End-to-end reproducible Jupyter notebooks converted into interactive web articles
 - Practical experiments across Statistics, Time Series, Gen AI, RAG, and Agentic AI
 - Deep dives into algorithmic concepts, performance tuning, and system architecture
 
 Feel free to browse the [latest articles](index.qmd) or check out the code on [GitHub](https://github.com/alekha1234/blog).
+:::

@@ -13,6 +13,9 @@ website:
   description: "Technical blog & notebooks on Statistics, Time Series, Data Science, Gen AI, RAG, and Agentic AI by Gujuri Alekha."
   site-url: "https://alekha1234.github.io/blog/"
   page-navigation: true
+  favicon: ""
+  open-graph: true
+  twitter-card: true
   navbar:
     background: primary
     search: true
@@ -54,7 +57,9 @@ format:
     code-tools: true
     code-copy: true
     code-overflow: wrap
-    highlight-style: github
+    highlight-style:
+      light: github
+      dark: atom-one-dark
 
 execute:
   freeze: auto
