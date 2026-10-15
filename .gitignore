@@ -53,3 +53,14 @@ x86/
 *.ide
 .vs
 .vscode/settings.json
+
+/.quarto/
+**/*.quarto_ipynb
+/_site/
+.ipynb_checkpoints/
+__pycache__/
+
+# Unnecessary / Scratch / Personal analysis files
+alekha-notes/
+github-profile-style-analysis.md
+naukri_profile.md

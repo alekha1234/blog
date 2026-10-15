@@ -1,0 +1,60 @@
+project:
+  type: website
+  output-dir: _site
+  render:
+    - "index.qmd"
+    - "about.qmd"
+    - "*/*.ipynb"
+    - "!Programming in Cpp/**"
+    - "!Programming in Java/**"
+
+website:
+  title: "Gujuri Alekha | Blog"
+  description: "Technical blog & notebooks on Statistics, Time Series, Data Science, Gen AI, RAG, and Agentic AI by Gujuri Alekha."
+  site-url: "https://alekha1234.github.io/blog/"
+  page-navigation: true
+  navbar:
+    background: primary
+    search: true
+    left:
+      - text: "Home"
+        href: index.qmd
+      - text: "📈 Time Series Series"
+        href: "Time Series Forecasting/00_time_series_analysis_and_forecasting.ipynb"
+      - text: "About"
+        href: about.qmd
+    right:
+      - icon: github
+        href: https://github.com/alekha1234/blog
+        aria-label: "GitHub"
+      - icon: linkedin
+        href: https://www.linkedin.com/
+        aria-label: "LinkedIn"
+  sidebar:
+    - id: "time-series"
+      title: "📈 Time Series Track"
+      style: "docked"
+      contents:
+        - "Time Series Forecasting/00_time_series_analysis_and_forecasting.ipynb"
+        - "Time Series Forecasting/01_timeseries_all_models.ipynb"
+  page-footer:
+    left: "© 2026 Gujuri Alekha"
+    right: "Built with [Quarto](https://quarto.org/) & [GitHub Pages](https://pages.github.com/)"
+
+format:
+  html:
+    theme:
+      light: cosmo
+      dark: darkly
+    css: styles.css
+    toc: true
+    toc-depth: 3
+    smooth-scroll: true
+    code-fold: true
+    code-tools: true
+    code-copy: true
+    code-overflow: wrap
+    highlight-style: github
+
+execute:
+  freeze: auto

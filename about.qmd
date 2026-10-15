@@ -1,0 +1,39 @@
+---
+title: "About Me"
+about:
+  template: solana
+  links:
+    - icon: github
+      text: GitHub
+      href: https://github.com/alekha1234
+    - icon: linkedin
+      text: LinkedIn
+      href: https://www.linkedin.com/
+---
+
+### Gujuri Alekha
+**Data Scientist | Applied Machine Learning & Time Series Forecasting**
+
+Welcome! I am an applied Data Scientist with 2+ years of hands-on experience in building machine learning pipelines, time-series forecasting engines, and production MLOps workflows.
+
+Currently, I work as a **Data Scientist Associate at Trinity Mobility**, designing intelligent IoT pipelines, energy demand simulation engines, and smart municipal alert services.
+
+---
+
+### 🛠️ Technical Competencies
+
+- **Machine Learning & Forecasting**: Time Series Modeling (ARIMA, SARIMA, Prophet, STL), Classification, Regression, scikit-learn, statsmodels
+- **Data Engineering & Big Data**: Pandas, NumPy, PySpark, SQL, Data Pipelines
+- **MLOps & Backend**: FastAPI, Flask, MLflow, Docker, CI/CD with GitHub Actions
+- **Languages**: Python, C++, Java, SQL
+
+---
+
+### 📖 About AI Chronicles
+
+This repository and blog is my open technical journal where I document:
+- End-to-end reproducible Jupyter notebooks converted into interactive web articles
+- Practical experiments across Statistics, Time Series, Gen AI, RAG, and Agentic AI
+- Deep dives into algorithmic concepts, performance tuning, and system architecture
+
+Feel free to browse the [latest articles](index.qmd) or check out the code on [GitHub](https://github.com/alekha1234/blog).
