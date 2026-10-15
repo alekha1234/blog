@@ -4,12 +4,15 @@ pagetitle: "About — Gujuri Alekha"
 about:
   template: solana
   links:
+    - icon: globe
+      text: Portfolio
+      href: https://alekha1234.github.io/gujurialekha.github.io/
+    - icon: linkedin
+      text: LinkedIn
+      href: https://www.linkedin.com/in/gujuri-alekha/
     - icon: github
       text: GitHub
       href: https://github.com/alekha1234
-    - icon: linkedin
-      text: LinkedIn
-      href: https://www.linkedin.com/
 ---
 
 ### Gujuri Alekha

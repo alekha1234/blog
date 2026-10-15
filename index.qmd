@@ -16,6 +16,7 @@ listing:
   sort-ui: true
   filter-ui: true
   fields: [date, title, reading-time, description, categories]
+  date-format: "MMM D, YYYY, h:mm A"
   feed: true
 ---
 
@@ -227,13 +228,16 @@ Practical, reproducible notebooks and engineering guides on **Time Series Foreca
         <span class="author-role-badge">Data Scientist • Trinity Mobility</span>
       </div>
       <div class="author-action-chips">
+        <a href="https://alekha1234.github.io/gujurialekha.github.io/" class="btn-author-chip chip-primary" target="_blank" rel="noopener">
+          <i class="bi bi-globe"></i> Portfolio
+        </a>
+        <a href="https://www.linkedin.com/in/gujuri-alekha/" class="btn-author-chip" target="_blank" rel="noopener">
+          <i class="bi bi-linkedin"></i> LinkedIn
+        </a>
         <a href="https://github.com/alekha1234" class="btn-author-chip" target="_blank" rel="noopener">
           <i class="bi bi-github"></i> GitHub
         </a>
-        <a href="https://www.linkedin.com/" class="btn-author-chip" target="_blank" rel="noopener">
-          <i class="bi bi-linkedin"></i> LinkedIn
-        </a>
-        <a href="about.html" class="btn-author-chip chip-primary">
+        <a href="about.html" class="btn-author-chip">
           About &amp; Resume →
         </a>
       </div>

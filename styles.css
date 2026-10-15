@@ -702,6 +702,12 @@ body.quarto-dark .quarto-post .listing-title a {
   align-items: center !important;
 }
 
+.quarto-post .listing-date::before {
+  content: '📅';
+  margin-right: 0.35rem;
+  font-size: 0.75rem;
+}
+
 .quarto-post .listing-reading-time {
   font-size: 0.8rem !important;
   font-weight: 500 !important;

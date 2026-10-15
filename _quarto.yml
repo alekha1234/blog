@@ -22,17 +22,21 @@ website:
     left:
       - text: "Home"
         href: index.qmd
-      - text: "📈 Time Series Series"
+      - text: "📈 Time Series Track"
         href: "Time Series Forecasting/00_time_series_analysis_and_forecasting.ipynb"
       - text: "About"
         href: about.qmd
     right:
+      - text: "Portfolio"
+        icon: globe
+        href: https://alekha1234.github.io/gujurialekha.github.io/
+        aria-label: "Portfolio"
+      - icon: linkedin
+        href: https://www.linkedin.com/in/gujuri-alekha/
+        aria-label: "LinkedIn"
       - icon: github
         href: https://github.com/alekha1234/blog
         aria-label: "GitHub"
-      - icon: linkedin
-        href: https://www.linkedin.com/
-        aria-label: "LinkedIn"
   sidebar:
     - id: "time-series"
       title: "📈 Time Series Track"
@@ -50,6 +54,8 @@ format:
       light: cosmo
       dark: darkly
     css: styles.css
+    include-in-header: includes/seo_header.html
+    date-format: "MMM D, YYYY, h:mm A"
     toc: true
     toc-depth: 3
     smooth-scroll: true
