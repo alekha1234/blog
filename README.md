@@ -22,16 +22,6 @@ Each topic folder is a track: numbered notebooks meant to be read in order.
 | 1 | **[Time Series Analysis in Python: Decomposition, STL & Stationarity Tests](https://alekha1234.github.io/blog/time-series/01-time-series-analysis-and-forecasting.html)** | Additive vs multiplicative decomposition, STL, stationarity tests (ADF, KPSS), transformations |
 | 2 | **[ARIMA & SARIMA in Python: AR, MA, ARMA Models on Apple Stock Data](https://alekha1234.github.io/blog/time-series/02-arima-sarima-models.html)** | AR, MA, ARMA, ARIMA and SARIMA with statsmodels, RMSE evaluation |
 
-## 💻 Run locally
-
-Needs the [Quarto CLI](https://quarto.org/docs/get-started/) (`winget install Posit.Quarto`) and
-Python 3.10+ with `pip install jupyter`.
-
-```bash
-quarto preview   # live preview at http://localhost:4200/
-quarto render    # build the site into _site/
-```
-
 ## 📖 Docs
 
 - [PUBLISHING.md](PUBLISHING.md): adding notebooks and topic tracks, front matter rules, SEO setup
