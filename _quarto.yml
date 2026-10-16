@@ -57,6 +57,7 @@ website:
 
 filters:
   - seo-jsonld.lua
+  - lazy-images.lua
 
 format:
   html:
@@ -66,6 +67,7 @@ format:
     css: styles.css
     include-in-header: includes/seo_header.html
     canonical-url: true
+    html-math-method: katex  # far less main-thread work than MathJax (TBT ~540ms -> ~200ms on mobile)
     date-format: "MMM D, YYYY"
     toc: true
     toc-depth: 3
