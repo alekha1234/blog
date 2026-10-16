@@ -32,6 +32,7 @@ blog/
 ├── _quarto.yml                                 # Site config: navigation, sidebars, SEO settings
 ├── index.qmd                                   # Homepage listing + homepage JSON-LD (WebSite, Blog, Person)
 ├── about.qmd                                   # Author profile & bio
+├── DESIGN.md                                   # Design system: tokens, components, rules (not published)
 ├── 404.qmd                                     # "Page not found" page
 ├── seo-jsonld.lua                              # Adds BlogPosting JSON-LD to every article
 ├── styles.css                                  # Modern styles (Inter, Space Grotesk, JetBrains Mono)
