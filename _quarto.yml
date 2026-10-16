@@ -3,8 +3,10 @@ project:
   output-dir: _site
   render:
     - "index.qmd"
+    - "articles.qmd"
     - "about.qmd"
     - "404.qmd"
+    - "*/index.qmd"
     - "*/*.ipynb"
     - "!Programming in Cpp/**"
     - "!Programming in Java/**"
@@ -15,6 +17,7 @@ website:
   site-url: "https://alekha1234.github.io/blog/"
   site-path: "/blog/"
   page-navigation: true
+  bread-crumbs: false  # the article eyebrow already links back to the track roadmap
   favicon: images/favicon.png
   image: images/profile.png
   google-analytics: "G-X9RX470F8T"
@@ -24,61 +27,80 @@ website:
     creator: "@Alekha81293434"
     card-style: summary_large_image
   navbar:
-    background: primary
+    background: light
+    title: "Gujuri Alekha"
     search: true
     left:
-      - text: "Home"
-        href: index.qmd
-      - text: "📈 Time Series Track"
-        href: "time-series/time-series-analysis-and-forecasting.ipynb"
+      # One menu entry per track (same order as the homepage roadmap)
+      - text: "Tracks"
+        menu:
+          - text: "Time Series"
+            href: time-series/index.qmd
+      - text: "Articles"
+        href: articles.qmd
       - text: "About"
         href: about.qmd
     right:
-      - text: "Portfolio"
-        icon: globe
-        href: https://alekha1234.github.io/gujurialekha.github.io/
-        aria-label: "Portfolio"
-      - icon: linkedin
-        href: https://www.linkedin.com/in/gujuri-alekha/
-        aria-label: "LinkedIn"
       - icon: github
         href: https://github.com/alekha1234/blog
         aria-label: "GitHub"
+      - icon: linkedin
+        href: https://www.linkedin.com/in/gujuri-alekha/
+        aria-label: "LinkedIn"
+      - text: "Portfolio"
+        href: https://alekha1234.github.io/gujurialekha.github.io/
+  # One docked sidebar per track: `auto` lists the roadmap page, then notebooks by `order:`
   sidebar:
-    - id: "time-series"
-      title: "📈 Time Series Track"
-      style: "docked"
+    - id: time-series
+      title: "Time Series Track"
+      style: docked
       contents:
-        - "time-series/time-series-analysis-and-forecasting.ipynb"
-        - "time-series/arima-sarima-models.ipynb"
+        - auto: time-series
   page-footer:
-    left: "© 2026 Gujuri Alekha"
-    right: "Built with [Quarto](https://quarto.org/) & [GitHub Pages](https://pages.github.com/)"
+    left: "© 2026 Gujuri Alekha · Notebooks on data science, machine learning and AI"
+    right:
+      - text: "Articles"
+        href: articles.qmd
+      - text: "About"
+        href: about.qmd
+      - text: "RSS"
+        href: index.xml
+      - text: "Portfolio"
+        href: https://alekha1234.github.io/gujurialekha.github.io/
 
 filters:
   - seo-jsonld.lua
+  - article-chrome.lua
   - lazy-images.lua
 
 format:
   html:
     theme:
-      light: [cosmo, theme-fonts.scss]
-      dark: [darkly, theme-fonts.scss]
+      light: [cosmo, theme-light.scss]
+      dark: [darkly, theme-dark.scss]
     css: styles.css
     include-in-header: includes/seo_header.html
+    template-partials:
+      - _partials/title-block.html
+    grid:
+      sidebar-width: 240px
+      body-width: 680px
+      margin-width: 240px
     canonical-url: true
     html-math-method: katex  # far less main-thread work than MathJax (TBT ~540ms -> ~200ms on mobile)
     date-format: "MMM D, YYYY"
     toc: true
     toc-depth: 3
+    toc-title: "On this page"
     smooth-scroll: true
+    lightbox: true
     code-fold: true
-    code-tools: true
+    code-summary: "Show code"
     code-copy: true
     code-overflow: wrap
     highlight-style:
       light: github
-      dark: atom-one-dark
+      dark: github-dark
 
 execute:
   freeze: auto

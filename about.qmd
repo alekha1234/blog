@@ -1,66 +1,60 @@
 ---
-title: "About Me"
+title: "About"
 pagetitle: "About the Author"
-about:
-  template: solana
-  links:
-    - icon: globe
-      text: Portfolio
-      href: https://alekha1234.github.io/gujurialekha.github.io/
-    - icon: linkedin
-      text: LinkedIn
-      href: https://www.linkedin.com/in/gujuri-alekha/
-    - icon: github
-      text: GitHub
-      href: https://github.com/alekha1234
+description: "Applied data scientist working on machine learning pipelines, time-series forecasting and production MLOps."
+toc: false
 ---
 
-### Gujuri Alekha
-**Data Scientist | Applied Machine Learning & Time Series Forecasting**
+```{=html}
+<section class="author-card author-card-lg" aria-label="Author">
+  <img class="author-avatar" src="images/favicon.png" alt="Portrait of Gujuri Alekha" width="72" height="72">
+  <div class="author-card-body">
+    <p class="author-name">Gujuri Alekha</p>
+    <p class="meta-mono">Data Scientist · Applied ML &amp; time series forecasting</p>
+    <div class="author-links">
+      <a class="btn-ui btn-ui-secondary" href="https://alekha1234.github.io/gujurialekha.github.io/">Portfolio</a>
+      <a class="btn-ui btn-ui-ghost" href="https://www.linkedin.com/in/gujuri-alekha/">LinkedIn</a>
+      <a class="btn-ui btn-ui-ghost" href="https://github.com/alekha1234">GitHub</a>
+    </div>
+  </div>
+</section>
+```
 
 Welcome! I am an applied Data Scientist with 2+ years of hands-on experience in building machine learning pipelines, time-series forecasting engines, and production MLOps workflows.
 
 Currently, I work as a **Data Scientist Associate at Trinity Mobility**, designing intelligent IoT pipelines, energy demand simulation engines, and smart municipal alert services.
 
----
+## Technical competencies
 
-::: {.about-card}
-### 🛠️ Technical Competencies
-
-::: {style="display: flex; flex-wrap: wrap; gap: 0.35rem; margin-top: 0.5rem;"}
-[Time Series Modeling]{.skill-tag}
-[ARIMA / SARIMA]{.skill-tag}
-[Prophet]{.skill-tag}
-[STL Decomposition]{.skill-tag}
-[Classification]{.skill-tag}
-[Regression]{.skill-tag}
-[scikit-learn]{.skill-tag}
-[statsmodels]{.skill-tag}
-[Pandas]{.skill-tag .violet}
-[NumPy]{.skill-tag .violet}
-[PySpark]{.skill-tag .violet}
-[SQL]{.skill-tag .violet}
-[FastAPI]{.skill-tag}
-[Flask]{.skill-tag}
-[MLflow]{.skill-tag}
-[Docker]{.skill-tag}
-[CI/CD]{.skill-tag}
-[Python]{.skill-tag .violet}
-[C++]{.skill-tag .violet}
-[Java]{.skill-tag .violet}
+::: {.tag-list}
+[Time Series Modeling]{.tag-pill}
+[ARIMA / SARIMA]{.tag-pill}
+[Prophet]{.tag-pill}
+[STL Decomposition]{.tag-pill}
+[Classification]{.tag-pill}
+[Regression]{.tag-pill}
+[scikit-learn]{.tag-pill}
+[statsmodels]{.tag-pill}
+[Pandas]{.tag-pill}
+[NumPy]{.tag-pill}
+[PySpark]{.tag-pill}
+[SQL]{.tag-pill}
+[FastAPI]{.tag-pill}
+[Flask]{.tag-pill}
+[MLflow]{.tag-pill}
+[Docker]{.tag-pill}
+[CI/CD]{.tag-pill}
+[Python]{.tag-pill}
+[C++]{.tag-pill}
+[Java]{.tag-pill}
 :::
 
-:::
+## Experience
 
-::: {.about-card}
-### 💼 Experience
-
-**Data Scientist Associate** — Trinity Mobility  
+**Data Scientist Associate**, Trinity Mobility\
 Designing intelligent IoT data pipelines, energy demand simulation engines, and smart municipal alert services. Building production-grade machine learning solutions for real-world infrastructure.
-:::
 
-::: {.about-card}
-### 📖 About this Blog
+## About this blog
 
 This repository and blog is my open technical journal where I document:
 
@@ -68,5 +62,4 @@ This repository and blog is my open technical journal where I document:
 - Practical experiments across Statistics, Time Series, Gen AI, RAG, and Agentic AI
 - Deep dives into algorithmic concepts, performance tuning, and system architecture
 
-Feel free to browse the [latest articles](index.qmd) or check out the code on [GitHub](https://github.com/alekha1234/blog).
-:::
+Start with a [learning track](index.qmd#roadmap), browse [all articles](articles.qmd), or check out the code on [GitHub](https://github.com/alekha1234/blog).

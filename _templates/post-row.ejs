@@ -1,0 +1,16 @@
+```{=html}
+<div class="post-rows">
+<% for (const item of items) { %>
+  <article class="post-row">
+    <p class="post-row-date"><%= item.date %></p>
+    <div class="post-row-body">
+      <h3 class="post-row-title"><a href="<%- item.path %>"><%= item.title %></a></h3>
+      <% if (item.description) { %><p class="post-row-desc"><%= item.description %></p><% } %>
+      <p class="post-row-meta">
+        <% if (item.track && item.order) { %><span><%= item.track %> · Part <%= item.order %></span><% } %>
+      </p>
+    </div>
+  </article>
+<% } %>
+</div>
+```

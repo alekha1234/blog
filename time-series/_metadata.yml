@@ -1,0 +1,9 @@
+# Shared settings for every page in this track.
+# A notebook's `order:` sets its place in the roadmap (and should match its 01-, 02- filename prefix).
+track: "Time Series"
+body-classes: article
+code-tools: true  # "Code" menu: show/hide all code, view the notebook source
+citation: true
+appendix-cite-as: bibtex  # Quarto's "display" cite-as block fails aria-required-parent
+google-scholar: true
+reference-location: margin

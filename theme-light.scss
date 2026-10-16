@@ -1,0 +1,31 @@
+/*-- scss:defaults --*/
+// Light theme: Bootstrap/Quarto variables from DESIGN.md tokens.
+// The cosmo theme @imports Source Sans Pro; styles.css sets every font, so skip that download.
+$web-font-path: false;
+
+$primary: #4F46E5;
+$body-bg: #FFFFFF;
+$body-color: #334155;
+$headings-color: #0F172A;
+$link-color: #4F46E5;
+$border-color: #E2E8F0;
+$text-muted: #5F6B7D;
+
+$font-family-sans-serif: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+$font-family-monospace: "JetBrains Mono", ui-monospace, "SF Mono", Consolas, monospace;
+$headings-font-weight: 600;
+$border-radius: 6px;
+
+$navbar-bg: #FFFFFF;
+$navbar-fg: #334155;
+$navbar-hl: #0F172A;
+$sidebar-bg: #FFFFFF;
+$sidebar-fg: #5F6B7D;
+$sidebar-hl: #4F46E5;
+$footer-bg: #FFFFFF;
+$footer-fg: #5F6B7D;
+
+$code-block-bg: #F8FAFC;
+$code-block-border-left: false;
+$code-color: #0F172A;
+$code-bg: #F1F5F9;

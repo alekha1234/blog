@@ -11,12 +11,16 @@ Jupyter notebooks published as articles, with code folding, maths, figures, a ta
 and light/dark mode. The site is built with [Quarto](https://quarto.org/) and deployed to GitHub
 Pages on every push to `main`.
 
-## 📚 Articles
+## 📚 Learning tracks
 
-| Article | Topics |
-| :--- | :--- |
-| **[Time Series Analysis in Python: Decomposition, STL & Stationarity Tests](https://alekha1234.github.io/blog/time-series/time-series-analysis-and-forecasting.html)** | Additive vs multiplicative decomposition, STL, stationarity tests (ADF, KPSS), transformations |
-| **[ARIMA & SARIMA in Python: AR, MA, ARMA Models on Apple Stock Data](https://alekha1234.github.io/blog/time-series/arima-sarima-models.html)** | AR, MA, ARMA, ARIMA and SARIMA with statsmodels, RMSE evaluation |
+Each topic folder is a track: numbered notebooks meant to be read in order.
+
+**[Time Series Track](https://alekha1234.github.io/blog/time-series/)**
+
+| Part | Article | Topics |
+| :--- | :--- | :--- |
+| 1 | **[Time Series Analysis in Python: Decomposition, STL & Stationarity Tests](https://alekha1234.github.io/blog/time-series/01-time-series-analysis-and-forecasting.html)** | Additive vs multiplicative decomposition, STL, stationarity tests (ADF, KPSS), transformations |
+| 2 | **[ARIMA & SARIMA in Python: AR, MA, ARMA Models on Apple Stock Data](https://alekha1234.github.io/blog/time-series/02-arima-sarima-models.html)** | AR, MA, ARMA, ARIMA and SARIMA with statsmodels, RMSE evaluation |
 
 ## 💻 Run locally
 

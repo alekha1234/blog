@@ -1,0 +1,17 @@
+```{=html}
+<ol class="roadmap">
+<% for (const item of items) { %>
+  <li class="roadmap-step">
+    <span class="roadmap-marker" aria-hidden="true"><%= String(item.order ?? '').padStart(2, '0') %></span>
+    <div class="roadmap-body">
+      <p class="roadmap-part">Part <%= item.order %></p>
+      <h3 class="roadmap-title"><a href="<%- item.path %>"><%= item.title %></a></h3>
+      <% if (item.description) { %><p class="roadmap-desc"><%= item.description %></p><% } %>
+      <p class="roadmap-meta">
+        <% for (const category of (item.categories || []).slice(0, 4)) { %><span class="tag-pill"><%= category %></span><% } %>
+      </p>
+    </div>
+  </li>
+<% } %>
+</ol>
+```

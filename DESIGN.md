@@ -292,6 +292,17 @@ components:
     textColor: "{colors.ink}"
     rounded: "{rounded.lg}"
     padding: 16px 20px
+  track-card:
+    backgroundColor: "{colors.canvas}"
+    textColor: "{colors.ink}"
+    rounded: "{rounded.lg}"
+    padding: 24px
+  roadmap-step-marker:
+    backgroundColor: "{colors.primary-subtle}"
+    textColor: "{colors.primary}"
+    typography: "{typography.label-mono}"
+    rounded: "{rounded.full}"
+    size: 40px
   cite-block:
     backgroundColor: "{colors.surface}"
     textColor: "{colors.body}"
@@ -469,7 +480,9 @@ separate surfaces and carry no information.
 
 ## Typography
 
-Three families, all on Google Fonts. This replaces the current four (Space Grotesk is dropped).
+Three families, all on Google Fonts. JetBrains Mono loads with `display=optional` so a late
+font swap never re-wraps code blocks (it caused a 0.26 layout shift on mobile); Inter and
+Source Serif 4 use `display=swap`.
 
 | Family | Role | Weights to load |
 |---|---|---|
@@ -494,7 +507,7 @@ Source Serif 4 → `Charter, Georgia, serif`; JetBrains Mono → `ui-monospace, 
 | body-md | Inter | 16px | 400 | 1.6 | -0.011em | UI copy, homepage and About text |
 | body-sm | Inter | 14px | 400 | 1.5 | -0.006em | TOC, footer, secondary UI |
 | label-md | Inter | 14px | 500 | 1.4 | 0 | Buttons, tabs, table headers |
-| label-mono | JetBrains Mono | 12px | 500 | 1.4 | 0.04em, UPPERCASE | Eyebrows, dates, tags, reading time |
+| label-mono | JetBrains Mono | 12px | 500 | 1.4 | 0.04em, UPPERCASE | Eyebrows, dates, tags, part numbers |
 | code-md | JetBrains Mono | 14.5px | 400 | 1.6 | 0 | Code blocks and cell output |
 | caption-sm | Inter | 14px | 400 | 1.5 | 0 | Figure and table captions |
 
@@ -508,7 +521,9 @@ On screens under 576px, prose-lg drops to 17px/1.65 and headline-md to 24px.
 - **Balance headings** with `text-wrap: balance`; use `text-wrap: pretty` on prose paragraphs.
 - **Numbers in tables and metadata** use `font-variant-numeric: tabular-nums`.
 - **Eyebrows and metadata are mono uppercase** with 0.04em tracking (dates, "TIME SERIES TRACK",
-  "12 MIN READ"). Tags are mono lowercase.
+  "PART 2 OF 3"). Tags are mono lowercase.
+- **No reading time.** Quarto counts prose words only, so code-heavy notebooks show "1 min";
+  the site shows the part number and track instead.
 - **Links in prose** are primary-coloured with a 1px underline at 30% opacity, offset 3px; the
   underline goes to full opacity on hover. Links in UI chrome are not underlined.
 - **Line length** stays between 60 and 80 characters for prose (the 680px column gives about 72
@@ -535,27 +550,40 @@ Section spacing on the homepage: 64px on mobile, 96px on desktop.
 
 ### Page templates
 
+The site is organised as **learning tracks**: each topic folder holds numbered notebooks that
+are read in order (`01-…`, `02-…`, with a matching `order:`). Every page helps the reader answer
+"where am I in the track, and what do I read next?".
+
 **Homepage**, top to bottom:
 
-1. **Intro hero**: left-aligned on the canvas, no dark panel. Eyebrow (`DATA SCIENCE · ML · AI`),
-   headline-display (one short line), one sentence of dek in body-md, two buttons
-   (primary "Read the latest", secondary "Start the Time Series track"). Optional right-hand
-   visual must be a real chart from a published notebook, linked to that article.
-2. **Tracks**: one card per learning series (currently "Time Series Track · 2 articles"). Each
-   card shows the track name, a one-line description, the number of parts and a "Start" link.
-3. **Latest articles**: category tabs (All, Time Series, Statistics, Machine Learning, Python)
-   above an editorial list of post rows. An optional single featured card can sit above the list.
-4. **Author card**: avatar, name, role, two-sentence bio, links (Portfolio, LinkedIn, GitHub).
+1. **Intro hero**: left-aligned on the canvas, no dark panel. Eyebrow
+   (`DATA SCIENCE · MACHINE LEARNING · AI`), headline-display ("Learn data science and AI, one
+   notebook at a time."), one sentence of dek, two buttons (primary "Start the Time Series
+   track", secondary "Browse all articles"). Any visual added later must be a real chart from
+   a published notebook, linked to that article.
+2. **Learning roadmap**: one track card per track, in recommended order (Track 01, 02…).
+3. **Latest**: the five newest post rows across all tracks, with an "All articles →" link.
+4. **Author card**: avatar, name, role, two-sentence bio, links (Portfolio, LinkedIn, GitHub, About).
 5. **Footer.**
 
-**Article page**: the 680px prose column centred in the container, left sidebar for the
-current track, right margin column for the TOC. Order: series banner, article header, body,
-series navigation, "Cite this article", follow card, footer.
+**Track roadmap page** (`<track>/index.qmd`): title and dek, one intro sentence, a surface box
+with "You'll learn / Prerequisites / Tools", then the **roadmap**: a vertical numbered stepper
+of every part in order. It is the first entry in the track's sidebar and the target of every
+"Track · Part N" eyebrow.
 
-**About page**: single 680px column, author card at the top, then experience and skills as
-plain sections. No decorative cards inside cards.
+**Article page**: the 680px prose column centred in the container, the track sidebar on the
+left (roadmap page, then every part in order, current part highlighted), the TOC in the right
+margin. Order: article header (eyebrow "Track · Part N of M"), body, follow card, "Cite this
+article" (BibTeX), previous / next cards, footer.
 
-**404 page**: headline-md, one sentence, and links to the homepage and the latest articles.
+**All articles page**: every notebook newest first, with a filter box and a category list in
+the margin, plus a link back to the learning tracks.
+
+**About page**: single 680px column, author card at the top, then skills (tag pills),
+experience and "About this blog" as plain sections. No decorative cards inside cards.
+
+**404 page**: headline-md, one sentence, and links to the homepage, the track roadmaps, all
+articles and About.
 
 ## Elevation & Depth
 
@@ -619,9 +647,9 @@ horizontal padding, icons 16px with an 8px gap. Small variant: 30px tall, 12px p
   Tabs filter the listing; they are buttons with `aria-pressed`, never emoji pills.
 
 ### Post row (homepage list)
-- Grid: date column (label-mono muted, 120px) | content column.
-- Content: title (title-md ink, 2-line clamp), one-line description (body-sm body),
-  then tags and reading time (label-mono muted).
+- Grid: date column (label-mono muted, 140px) | content column.
+- Content: title (title-md ink), one-line description (body-sm body), then
+  "TIME SERIES · PART 2" (label-mono muted).
 - Rows are separated by a hairline; padding 20px top and bottom; no card, no thumbnail.
 - Hover: title turns primary; the whole row is the link target.
 - Under 768px the date moves above the title.
@@ -632,16 +660,28 @@ horizontal padding, icons 16px with an 8px gap. Small variant: 30px tall, 12px p
 - Eyebrow "FEATURED" in label-mono primary, title in headline-sm, dek in body-md.
 - Hover: level 2 lift; the thumbnail scales to at most 1.02 over 300ms.
 
-### Track card
-- Level 1 card, radius lg, 20px padding. Track name (title-md), description (body-sm),
-  "2 PARTS" (label-mono muted), "Start →" text link in primary.
+### Track card (`track-card`)
+- Level 1 card, radius lg, 24px padding; hover lifts to level 2.
+- Eyebrow "TRACK 01", track name (headline-sm), description (body-sm), "2 PARTS · READ IN
+  ORDER" (label-mono muted).
+- The first four parts as a numbered list (mono number + title link), with hairline rows;
+  "+ N more in the roadmap" when there are more.
+- Actions: primary "Start Part 1" (opens part 1) and secondary "View roadmap".
+
+### Roadmap step (`roadmap-step-marker`)
+- A vertical stepper: a 40px circle (primary-subtle fill, primary mono number "01") per part,
+  joined to the next by a 2px hairline connector.
+- Beside it: "PART 1" (label-mono primary), the title (headline-sm, link), the description
+  (body-md) and up to four tag pills.
+- Under 576px the circle shrinks to 32px.
 
 ### Article header
-1. **Eyebrow**: track name in label-mono primary, for example `TIME SERIES TRACK · PART 1`.
-2. **Title**: headline-lg ink, balanced.
-3. **Dek**: the front-matter `description` in dek-lg body, max 2 lines.
-4. **Meta row**: date · reading time · tags, in label-mono muted, separated by `·`.
-5. **Divider**: hairline, 32px below the meta row.
+1. **Eyebrow**: `TIME SERIES TRACK · PART 1 OF 2` in label-mono primary, linked to the track
+   roadmap. This replaces a separate series banner and breadcrumbs.
+2. **Title**: headline-lg ink, balanced. Tag pills sit directly below it.
+3. **Dek**: the front-matter `description` in dek-lg body.
+4. **Meta row**: author and date, in label-mono muted.
+5. **Divider**: hairline, 24px below the meta row.
 
 ### Table of contents (right margin)
 - Sticky at `top: 84px` (nav + 24px). Title "On this page" in label-mono muted.
@@ -653,8 +693,9 @@ horizontal padding, icons 16px with an 8px gap. Small variant: 30px tall, 12px p
 - surface fill, hairline border, radius md, 16px × 20px padding, code-md.
 - Top-right: language label in label-mono muted (`PYTHON`) and a ghost copy button that
   shows "Copied" for 1.5s after use.
-- Syntax theme: GitHub Light / GitHub Dark Dimmed, with the AA-corrected token colours
-  (variables `#B34700`, alerts `#C62828` in light mode).
+- Syntax theme: GitHub (light) / GitHub Dark, with the light tokens that fail AA on the code
+  surface overridden: keywords, built-ins and control flow `#CF222E`, variables `#B34700`,
+  alerts and errors `#C62828`.
 - Long lines wrap (`code-overflow: wrap`); never a horizontal scrollbar inside prose.
 - **"Show code" fold**: when code is folded, the summary is a chip (label-mono, radius full,
   hairline border) reading `SHOW CODE`, placed directly above the output it belongs to.
@@ -699,10 +740,11 @@ line icon, body in prose-lg at 17px. Never stack two callouts back to back.
 - Long equations scroll horizontally inside their own container, never the page.
 
 ### Series navigation
-- **Top banner** (articles in a track): surface fill, radius md, one line: "Part 1 of 2 in the
-  Time Series Track" with a link to the track.
-- **Bottom cards**: two series-nav cards side by side (stacked under 768px). Each shows
-  "← PREVIOUS" or "NEXT →" in label-mono muted and the title in title-md. Level 1, hover level 2.
+- **Position in the track**: the article eyebrow ("Part 1 of 2", linked to the roadmap) and
+  the track sidebar, where the current part is highlighted in primary-subtle.
+- **Bottom cards**: Quarto's previous / next links styled as two series-nav cards side by side
+  (stacked under 768px). Each shows "← PREVIOUS" or "NEXT →" in label-mono muted and the title
+  in title-md. Level 1, hover level 2. They follow the sidebar order: roadmap → part 1 → part 2.
 
 ### Cite this article (`cite-block`)
 - Heading "Cite this article" in headline-sm, then a code-md BibTeX block on surface with a
@@ -736,17 +778,18 @@ line icon, body in prose-lg at 17px. Never stack two callouts back to back.
 - Separate surfaces with 1px hairlines and tone steps; lift only on hover.
 - Keep article prose in Source Serif 4 at 18px in the 680px column.
 - Give every chart a caption, a figure number, alt text and the shared palette.
-- Put dates, tags, reading time and eyebrows in label-mono.
+- Put dates, tags, part numbers and eyebrows in label-mono.
 - Respect `prefers-reduced-motion` and keep every animation under 300ms.
 - Check new colour pairs against the contrast table before using them.
 - Keep the homepage hero real: link any visual to the article it came from.
 
 ### Don't
 - Don't use more than one accent colour or add gradients to text.
-- Don't use font weights above 600 (the current navbar brand and hero use 800).
-- Don't run infinite animations (the current navbar brand and accent words animate forever).
+- Don't use font weights above 600.
+- Don't run infinite animations (no animated gradient text or pulsing dots).
 - Don't add glow orbs, neon shadows or glassmorphism outside the navbar.
-- Don't show invented numbers in decorative charts (the current hero shows a made-up RMSE).
+- Don't show invented numbers in decorative charts.
+- Don't use HTML `<aside>` for in-flow cards: Quarto moves every `<aside>` into the margin column.
 - Don't use emoji as icons in navigation, tabs or headings.
 - Don't put muted text on anything darker than surface-raised in light mode.
 - Don't publish notebook stderr, warnings, progress bars or Colab widgets.
@@ -832,24 +875,22 @@ charts, the main reason article pages load slowly on mobile.
 
 ## Quarto Implementation Map
 
-Where each part of this system lives when the site is restyled. This section describes the
-target; it does not reflect the current files.
+Where each part of this system lives in the repo (implemented).
 
 | Concern | File | Setting |
 |---|---|---|
-| Prose and margin widths | `_quarto.yml` | `format.html.grid: {body-width: 680px, margin-width: 240px, sidebar-width: 240px}` |
-| Navbar | `_quarto.yml` | `website.navbar.background: light` (fixes the always-dark navbar) |
-| TOC | `_quarto.yml` | `toc: true`, `toc-location: right`, `toc-depth: 3`, `toc-title: "On this page"` |
-| Lightbox | `_quarto.yml` | `lightbox: true` |
-| Sidenotes | `_quarto.yml` | `reference-location: margin`, `citation-location: margin` |
-| Cite block | article front matter | `citation: true` (Quarto builds the BibTeX appendix) |
-| Code fold label | `_quarto.yml` | `code-summary: "Show code"` |
-| Math | `_quarto.yml` | `html-math-method: katex` (already set) |
-| Fonts | `includes/seo_header.html` | One Google Fonts link: Inter 400/500/600, Source Serif 4 400/600 + italic, JetBrains Mono 400/500 |
-| Bootstrap variables | a theme `.scss` layer next to `theme-fonts.scss` | `$primary`, `$body-bg`, `$body-color`, `$border-color`, `$font-family-sans-serif`, `$font-family-monospace`, `$border-radius` set from the tokens |
-| Design tokens | top of `styles.css` | CSS custom properties named after the YAML tokens (`--color-canvas`, `--radius-md`, …), with dark values under `body.quarto-dark` |
-| Listing | `index.qmd` | `listing.type: default` restyled as post rows; optional `include` filter for one featured post |
-| Tracks | `_quarto.yml` sidebar | One sidebar per track, title "Time Series Track" (no emoji) |
+| Design tokens | `styles.css` (section 1) | CSS custom properties named after the YAML tokens (`--color-canvas`, `--radius-md`, …); dark values under `body.quarto-dark` |
+| Bootstrap variables | `theme-light.scss`, `theme-dark.scss` | `$primary`, `$body-bg`, `$body-color`, `$link-color`, `$border-color`, font families, `$headings-font-weight: 600`, navbar / sidebar / footer / code colours; `$web-font-path: false` stops the themes downloading unused fonts |
+| Fonts | `includes/seo_header.html` | Inter 400/500/600 and Source Serif 4 400/600 + italic (`display=swap`); JetBrains Mono 400/500 (`display=optional`) |
+| Widths | `_quarto.yml` | `format.html.grid: {sidebar-width: 240px, body-width: 680px, margin-width: 240px}` |
+| Navbar | `_quarto.yml` | `background: light`, title "Gujuri Alekha" (CSS adds `/ blog`), "Tracks" menu, Articles, About; `bread-crumbs: false` |
+| TOC, lightbox, code fold, maths | `_quarto.yml` | `toc-title: "On this page"`, `lightbox: true`, `code-summary: "Show code"`, `html-math-method: katex` |
+| Track settings | `<track>/_metadata.yml` | `track`, `body-classes: article`, `code-tools`, `citation` (BibTeX only), `google-scholar`, `reference-location: margin` |
+| Track sidebar | `_quarto.yml` | one docked sidebar per track with `contents: [auto: <track>]` (sorted by `order:`) |
+| Article eyebrow, follow card | `article-chrome.lua`, `_partials/title-block.html` | Counts the track's notebooks for "Part N of M"; appends the follow card |
+| Track card, roadmap, post row | `_templates/track-card.ejs`, `roadmap.ejs`, `post-row.ejs` | Custom Quarto listing templates |
+| Homepage / track lists | `index.qmd`, `<track>/index.qmd` | One `track-card` listing per track; `post-row` listing (newest 5, also the RSS feed); `roadmap` listing per track |
+| Lazy images, structured data | `lazy-images.lua`, `seo-jsonld.lua` | Native lazy loading; BlogPosting JSON-LD |
 
 ## Research Basis
 

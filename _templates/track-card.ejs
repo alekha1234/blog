@@ -1,0 +1,25 @@
+<%
+// One card per track on the homepage. Settings come from `template-params` in index.qmd.
+// (No reading time: Quarto counts prose words only, so code-heavy notebooks read as "1 min".)
+const shown = items.slice(0, 4);
+%>
+```{=html}
+<article class="track-card">
+  <div class="track-card-head">
+    <p class="eyebrow">Track <%= templateParams.number %></p>
+    <h3 class="track-card-title"><a href="<%- templateParams.href %>"><%= templateParams.name %></a></h3>
+    <p class="track-card-desc"><%= templateParams.description %></p>
+    <p class="meta-mono"><%= items.length %> <%= items.length === 1 ? 'part' : 'parts' %> · read in order</p>
+  </div>
+  <ol class="track-card-steps">
+  <% for (const item of shown) { %>
+    <li><span class="step-num"><%= String(item.order ?? '').padStart(2, '0') %></span><a href="<%- item.path %>"><%= item.title %></a></li>
+  <% } %>
+  </ol>
+  <% if (items.length > shown.length) { %><p class="meta-mono track-card-more">+ <%= items.length - shown.length %> more in the roadmap</p><% } %>
+  <div class="track-card-actions">
+    <% if (items.length) { %><a class="btn-ui btn-ui-primary" href="<%- items[0].path %>">Start Part 1</a><% } %>
+    <a class="btn-ui btn-ui-secondary" href="<%- templateParams.href %>">View roadmap</a>
+  </div>
+</article>
+```

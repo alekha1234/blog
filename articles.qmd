@@ -1,0 +1,18 @@
+---
+title: "All articles"
+description: "Every published notebook, newest first. Filter by topic or search by keyword."
+toc: false
+listing:
+  contents: "*/*.ipynb"
+  sort: "date desc"
+  type: default
+  categories: true
+  sort-ui: false
+  filter-ui: true
+  fields: [date, title, description, categories]
+  feed: false
+---
+
+Prefer a guided path? Each [learning track](index.qmd#roadmap) lists its notebooks in reading order.
+
+## Newest first
