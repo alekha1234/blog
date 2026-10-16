@@ -225,6 +225,17 @@ body.quarto-dark .navbar,
   background: var(--accent-subtle);
 }
 
+/* Quarto renders the navbar with data-bs-theme="dark" in both modes, so it is always
+   dark glass; muted grey / indigo fall below WCAG AA (4.5:1) on it. */
+.navbar[data-bs-theme="dark"] .nav-link {
+  color: var(--text-secondary) !important;
+}
+
+.navbar[data-bs-theme="dark"] .nav-link:hover,
+.navbar[data-bs-theme="dark"] .nav-link.active {
+  color: #A5B4FC !important; /* indigo-300: ~5.5:1 on the navbar */
+}
+
 .navbar .nav-link::after {
   content: '';
   position: absolute;
@@ -771,6 +782,7 @@ body.quarto-dark .quarto-post .listing-title a {
   background: var(--border-light) !important;
   color: var(--text-secondary) !important;
   border: 1px solid var(--border) !important;
+  opacity: 1 !important; /* Quarto fades title-block categories below 4.5:1 contrast */
 }
 
 .quarto-post .listing-category:hover,
@@ -1131,6 +1143,22 @@ pre code {
   background: transparent;
   color: inherit;
   border: none;
+}
+
+/* github highlight theme: variable orange (#e36209) and alert red (#ff5555) are
+   3.1–3.5:1 on white; darken both to pass AA */
+body.quarto-light code span.va {
+  color: #B34700;
+}
+
+body.quarto-light code span.al {
+  color: #C62828;
+}
+
+/* Quarto's default muted grey (#6d7a86) is 4.2:1 on the canvas */
+figcaption,
+.header-section-number {
+  color: var(--text-secondary) !important;
 }
 
 div.sourceCode {

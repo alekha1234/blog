@@ -4,6 +4,7 @@ description: "Practical, reproducible notebooks and engineering guides on Time S
 toc: false
 page-layout: custom
 title-block-banner: false
+html-math-method: plain  # no math on the homepage; skips loading MathJax (~400 KB)
 listing:
   id: listing-articles
   contents:
@@ -196,7 +197,7 @@ Practical, reproducible notebooks and engineering guides on **Time Series Foreca
 ```
 
 <!-- ═══════════════ ARTICLE LISTING SECTION ═══════════════ -->
-::: {.articles-feed-wrapper}
+::: {.articles-feed-wrapper role="main"}
 
 ```{=html}
 <div class="section-header-block" id="articles-heading">
