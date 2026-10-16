@@ -1,4 +1,4 @@
-# Data Science & AI Blog 🧠💻
+# Gujuri Alekha | Blog 🧠💻
 ### Interactive Notebooks on Statistics, Time Series, Gen AI, RAG & Agents
 
 [![Deploy Quarto Blog to GitHub Pages](https://github.com/alekha1234/blog/actions/workflows/deploy.yml/badge.svg)](https://github.com/alekha1234/blog/actions/workflows/deploy.yml)
@@ -17,9 +17,8 @@ This repository automatically publishes executable Jupyter Notebooks (`.ipynb`) 
 
 | Article / Notebook | Topics | Status |
 | :--- | :--- | :--- |
-| **[Time Series Modeling: AR, MA, ARMA, ARIMA & SARIMA](https://alekha1234.github.io/code-chronicle-hub/posts/timeseries-all-models/)** | Classical time series modeling, Apple stock price prediction, statsmodels, RMSE evaluation | 🟢 Published |
-| **[Comprehensive Time Series Analysis and Forecasting](https://alekha1234.github.io/code-chronicle-hub/posts/time-series-forecasting/)** | Additive vs Multiplicative decomposition, STL, stationarity tests (ADF, KPSS), transformations | 🟢 Published |
-| **[Welcome to Code Chronicle Hub](https://alekha1234.github.io/code-chronicle-hub/posts/welcome/)** | Project overview, technical background, and upcoming studies | 🟢 Published |
+| **[Time Series Analysis in Python: Decomposition, STL & Stationarity Tests](https://alekha1234.github.io/blog/time-series/time-series-analysis-and-forecasting.html)** | Additive vs Multiplicative decomposition, STL, stationarity tests (ADF, KPSS), transformations | 🟢 Published |
+| **[ARIMA & SARIMA in Python: AR, MA, ARMA Models on Apple Stock Data](https://alekha1234.github.io/blog/time-series/arima-sarima-models.html)** | Classical time series modeling, Apple stock price prediction, statsmodels, RMSE evaluation | 🟢 Published |
 
 ---
 
@@ -29,48 +28,60 @@ This repository automatically publishes executable Jupyter Notebooks (`.ipynb`) 
 blog/
 ├── .github/
 │   └── workflows/
-│       └── deploy.yml                                # Automated GitHub Actions deployment
-├── _quarto.yml                                       # Navigation, sidebars & sequential paths
-├── index.qmd                                         # Homepage listing with search & categories
-├── about.qmd                                         # Author profile & bio
-├── styles.css                                        # Modern styles (Inter, Fira Code, tables)
-├── Time Series Forecasting/                          # 📈 Topic Track 1
-│   ├── 00_time_series_analysis_and_forecasting.ipynb # Step 00 (Decomposition, Stationarity)
-│   └── 01_timeseries_all_models.ipynb                # Step 01 (AR, MA, ARIMA, SARIMA)
-├── Statistics/                                       # 📊 Future Topic Track 2
-├── Generative AI/                                    # 🤖 Future Topic Track 3
-├── Programming in Cpp/                               # C++ programming notes
-└── Programming in Java/                              # Java programming notes
+│       └── deploy.yml                          # Automated GitHub Actions deployment
+├── _quarto.yml                                 # Site config: navigation, sidebars, SEO settings
+├── index.qmd                                   # Homepage listing + homepage JSON-LD (WebSite, Blog, Person)
+├── about.qmd                                   # Author profile & bio
+├── 404.qmd                                     # "Page not found" page
+├── seo-jsonld.lua                              # Adds BlogPosting JSON-LD to every article
+├── styles.css                                  # Modern styles (Inter, Space Grotesk, JetBrains Mono)
+├── includes/seo_header.html                    # Font preconnects + stylesheet
+├── images/                                     # Favicon and default social-share image
+├── time-series/                                # 📈 Topic Track 1
+│   ├── time-series-analysis-and-forecasting.ipynb  # Step 1 (Decomposition, Stationarity)
+│   └── arima-sarima-models.ipynb                   # Step 2 (AR, MA, ARIMA, SARIMA)
+├── Programming in Cpp/                         # C++ practice code (not published to the site)
+└── Programming in Java/                        # Java practice code (not published to the site)
 ```
 
 ---
 
-## ✍️ How to Add Ordered Topic Notebooks (e.g. `Machine Learning/`)
+## ✍️ How to Add Ordered Topic Notebooks (e.g. `machine-learning/`)
 
-You can create new topic directories directly in the root (like `Machine Learning/`, `Deep Learning/`, `Natural Language Processing/`) and maintain a numbered order (`00_...`, `01_...`):
+Folder and file names become the page URL, so use **lowercase-kebab-case** with keywords (no spaces, no underscores, no number prefixes). Reading order is set by `order:` and the sidebar, not by the filename.
 
 ### 1. Create a Topic Folder in the Root Directory
 ```text
-Machine Learning/
-├── 00_supervised_learning_foundations.ipynb
-├── 01_linear_and_logistic_regression.ipynb
-└── 02_decision_trees_and_random_forest.ipynb
+machine-learning/
+├── supervised-learning-foundations.ipynb
+├── linear-and-logistic-regression.ipynb
+└── decision-trees-and-random-forest.ipynb
 ```
 
 ### 2. Add YAML Frontmatter with `order:` to the First Cell
-In the notebook's first cell (set to **Raw** or **Markdown**):
+In the notebook's first cell (set to **Raw**):
 ```yaml
 ---
-title: "00: Supervised Learning Foundations"
+title: "Supervised Learning in Python: Regression, Classification & Gradient Descent"
 description: "Core concepts of regression, classification, cost functions, and gradient descent."
 author: "Gujuri Alekha"
 date: "2026-10-16"
 order: 0
 categories: [Machine Learning, Regression, Classification, Python]
+image-alt: "One sentence describing the first chart in the notebook"
 toc: true
+number-sections: true
 code-fold: show
 ---
 ```
+
+- **title**: put the keywords people search for first; aim for under 60 characters.
+- **description**: shown in Google results; keep it at 155 characters or fewer.
+- Use a fixed `date:` (the publish date). Avoid `date: last-modified` — CI checks out fresh files, so every post would show the deploy time.
+- Use `##` for top-level sections inside the notebook; the page title is already the H1.
+- If you ever rename a published notebook, add the old URL under `aliases:` so existing links redirect.
+
+Notebooks are **not re-executed** on deploy; the saved outputs are published as-is. Run the notebook top-to-bottom (*Restart & Run All*) before committing.
 
 ### 3. Link the Topic in `_quarto.yml` (For Sidebar Track & Sequential Reading)
 Open `_quarto.yml` and add your topic to the navbar and sidebar:
@@ -79,45 +90,47 @@ Open `_quarto.yml` and add your topic to the navbar and sidebar:
     left:
       - text: "Home"
         href: index.qmd
-      - text: "📈 Time Series"
-        href: "Time Series Analysis/00_time_series_analysis_and_forecasting.ipynb"
+      - text: "📈 Time Series Track"
+        href: "time-series/time-series-analysis-and-forecasting.ipynb"
       - text: "🤖 Machine Learning"
-        href: "Machine Learning/00_supervised_learning_foundations.ipynb"
+        href: "machine-learning/supervised-learning-foundations.ipynb"
+  sidebar:
+    - id: "machine-learning"
+      title: "🤖 Machine Learning Track"
+      style: "docked"
+      contents:
+        - "machine-learning/supervised-learning-foundations.ipynb"
+        - "machine-learning/linear-and-logistic-regression.ipynb"
 ```
 Readers will get:
-- A docked **Sidebar Track** showing every notebook in order (00, 01, 02...).
+- A docked **Sidebar Track** showing every notebook in order.
 - **"Next Page →"** and **"← Previous Page"** buttons at the bottom of each article so anyone can read through the entire topic in order!
 
-### 2. Add YAML Frontmatter to the First Cell of the Notebook
-In Jupyter Notebook, create a **Raw** (or Markdown) cell at the very top (cell #1) with:
-
-```yaml
----
-title: "My New Machine Learning Model"
-description: "Brief summary of what this article is about."
-author: "Gujuri Alekha"
-date: "2026-10-15"
-categories: [Machine Learning, Python, PySpark]
-toc: true
-number-sections: true
-code-fold: show
----
-```
-
-### 3. Commit and Push!
+### 4. Commit and Push!
 ```bash
-git add posts/my-new-model/
-git commit -m "feat: add new blog post on My New Machine Learning Model"
+git add machine-learning/ _quarto.yml
+git commit -m "feat: add Machine Learning track"
 git push origin main
 ```
 The GitHub Actions workflow in [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml) will automatically build and publish your new post to GitHub Pages in ~1 minute!
+
+After it's live, open Google Search Console → **URL Inspection**, paste the new article URL and click **Request indexing**.
+
+---
+
+## 🔎 SEO & Search Console
+
+- `sitemap.xml`, canonical links, Open Graph / Twitter cards and the favicon are generated by Quarto from `_quarto.yml`.
+- Structured data: the homepage has `WebSite`, `Blog` and `Person` items (in `index.qmd`); every article gets a `BlogPosting` item from `seo-jsonld.lua`. The Person `@id` matches the portfolio's, so Google treats both sites as the same author.
+- Google Analytics (`G-X9RX470F8T`, shared with the portfolio) is set in `_quarto.yml`.
+- Search Console property: URL prefix `https://alekha1234.github.io/blog/`, sitemap `https://alekha1234.github.io/blog/sitemap.xml`.
 
 ---
 
 ## 💻 Local Development & Preview
 
 ### Prerequisites
-- [Quarto CLI](https://quarto.org/docs/get-started/) (`winget install Quarto.Quarto`)
+- [Quarto CLI](https://quarto.org/docs/get-started/) (`winget install Posit.Quarto`)
 - Python 3.10+ with `jupyter`:
   ```bash
   pip install jupyter
@@ -141,7 +154,7 @@ Builds the production HTML website into the `_site/` directory.
 ## ⚙️ Enabling GitHub Pages (One-Time Setup)
 
 Once you push this branch to GitHub:
-1. Open your repository on GitHub: `https://github.com/alekha1234/code-chronicle-hub`.
+1. Open your repository on GitHub: `https://github.com/alekha1234/blog`.
 2. Go to **Settings** → **Pages** (under the "Code and automation" section).
 3. Under **Build and deployment** > **Source**, select:
    - **GitHub Actions**
@@ -153,7 +166,9 @@ Once you push this branch to GitHub:
 
 - **Author**: Gujuri Alekha
 - **GitHub**: [@alekha1234](https://github.com/alekha1234)
-- **Portfolio / Blog**: [https://alekha1234.github.io/code-chronicle-hub/](https://alekha1234.github.io/code-chronicle-hub/)
+- **Blog**: [https://alekha1234.github.io/blog/](https://alekha1234.github.io/blog/)
+- **Portfolio**: [https://alekha1234.github.io/gujurialekha.github.io/](https://alekha1234.github.io/gujurialekha.github.io/)
+- **LinkedIn**: [gujuri-alekha](https://www.linkedin.com/in/gujuri-alekha/)
 
 ---
 

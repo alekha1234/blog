@@ -1,6 +1,6 @@
 ---
 title: "About Me"
-pagetitle: "About — Gujuri Alekha"
+pagetitle: "About the Author"
 about:
   template: solana
   links:
@@ -60,7 +60,7 @@ Designing intelligent IoT data pipelines, energy demand simulation engines, and 
 :::
 
 ::: {.about-card}
-### 📖 About AI Chronicles
+### 📖 About this Blog
 
 This repository and blog is my open technical journal where I document:
 

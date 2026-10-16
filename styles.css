@@ -1,9 +1,8 @@
 /* ============================================================
-   AI Chronicles — Premium Design System v3
+   Gujuri Alekha | Blog — Premium Design System v3
    A visually striking, modern Data Science & AI publication
+   Fonts are loaded in includes/seo_header.html
    ============================================================ */
-
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700;800&display=swap');
 
 /* ─────────────── Design Tokens: Light ─────────────── */
 :root {

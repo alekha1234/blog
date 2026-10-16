@@ -1,0 +1,12 @@
+---
+title: "Page not found"
+toc: false
+search: false
+---
+
+The page you were looking for has moved or doesn't exist.
+
+- [Go to the homepage](index.qmd) to see all articles
+- [Time Series Analysis in Python: Decomposition, STL & Stationarity Tests](time-series/time-series-analysis-and-forecasting.ipynb)
+- [ARIMA & SARIMA in Python: AR, MA, ARMA Models on Apple Stock Data](time-series/arima-sarima-models.ipynb)
+- [About the author](about.qmd)

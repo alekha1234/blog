@@ -4,18 +4,25 @@ project:
   render:
     - "index.qmd"
     - "about.qmd"
+    - "404.qmd"
     - "*/*.ipynb"
     - "!Programming in Cpp/**"
     - "!Programming in Java/**"
 
 website:
   title: "Gujuri Alekha | Blog"
-  description: "Technical blog & notebooks on Statistics, Time Series, Data Science, Gen AI, RAG, and Agentic AI by Gujuri Alekha."
+  description: "Hands-on Python notebooks on time series forecasting, statistics and machine learning by Gujuri Alekha, Data Scientist."
   site-url: "https://alekha1234.github.io/blog/"
+  site-path: "/blog/"
   page-navigation: true
-  favicon: ""
-  open-graph: true
-  twitter-card: true
+  favicon: images/favicon.png
+  image: images/profile.png
+  google-analytics: "G-X9RX470F8T"
+  open-graph:
+    locale: en_US
+  twitter-card:
+    creator: "@Alekha81293434"
+    card-style: summary_large_image
   navbar:
     background: primary
     search: true
@@ -23,7 +30,7 @@ website:
       - text: "Home"
         href: index.qmd
       - text: "📈 Time Series Track"
-        href: "Time Series Forecasting/00_time_series_analysis_and_forecasting.ipynb"
+        href: "time-series/time-series-analysis-and-forecasting.ipynb"
       - text: "About"
         href: about.qmd
     right:
@@ -42,11 +49,14 @@ website:
       title: "📈 Time Series Track"
       style: "docked"
       contents:
-        - "Time Series Forecasting/00_time_series_analysis_and_forecasting.ipynb"
-        - "Time Series Forecasting/01_timeseries_all_models.ipynb"
+        - "time-series/time-series-analysis-and-forecasting.ipynb"
+        - "time-series/arima-sarima-models.ipynb"
   page-footer:
     left: "© 2026 Gujuri Alekha"
     right: "Built with [Quarto](https://quarto.org/) & [GitHub Pages](https://pages.github.com/)"
+
+filters:
+  - seo-jsonld.lua
 
 format:
   html:
@@ -55,7 +65,8 @@ format:
       dark: darkly
     css: styles.css
     include-in-header: includes/seo_header.html
-    date-format: "MMM D, YYYY, h:mm A"
+    canonical-url: true
+    date-format: "MMM D, YYYY"
     toc: true
     toc-depth: 3
     smooth-scroll: true
@@ -69,3 +80,4 @@ format:
 
 execute:
   freeze: auto
+  warning: false
