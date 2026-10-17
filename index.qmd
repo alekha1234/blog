@@ -24,7 +24,8 @@ listing:
     sort: "date desc"
     max-items: 5
     template: _templates/post-row.ejs
-    feed: true
+    feed:
+      type: partial  # carries each post's front-matter description (used as the excerpt on the portfolio)
 ---
 
 ::: {.home role="main"}
