@@ -76,6 +76,37 @@ title, and the homepage track card.
 
 3. Preview with `quarto preview`, then commit and push. Nothing else needs editing.
 
+### How a new post reaches the portfolio
+
+The portfolio's Writing section ([alekha1234.github.io/gujurialekha.github.io](https://alekha1234.github.io/gujurialekha.github.io/#writing))
+shows the **latest 4 posts** from this blog's RSS feed (`index.xml`). It reads the feed in the visitor's
+browser, so you don't need to commit or rebuild anything in the portfolio repo.
+
+- **Visitors** see the new post on the portfolio about **10 minutes after this blog's deploy finishes**
+  (GitHub Pages can cache the old feed for up to 10 minutes).
+- **Search engines and AI crawlers** see it after the portfolio's daily rebuild at 02:30 UTC. To show
+  it sooner, open the portfolio repo's **Actions** tab → *Deploy Next.js site to GitHub Pages* →
+  **Run workflow**.
+
+The feed is set up for this in `index.qmd` (the `latest` listing): `contents: "*/*.ipynb"`,
+`sort: "date desc"`, `max-items: 5` and `feed: type: partial`. Keep those as they are. `partial`
+puts each post's `description` in the feed, and the portfolio uses it as the card text.
+
+### Checklist before you push a new notebook
+
+- [ ] It's in a track folder (`time-series/03-….ipynb`). Notebooks at the repo root and `.qmd`
+      files are not in the feed.
+- [ ] The first cell is the Raw front-matter cell above.
+- [ ] `title`: under 60 characters. It becomes the portfolio card title.
+- [ ] `description`: 1–2 sentences, under 155 characters. It becomes the card text on the
+      portfolio (and the Google snippet).
+- [ ] `date`: a fixed date that is **newer than your other posts**. The portfolio shows the 4 newest
+      by date, so an older date can keep the post off it.
+- [ ] `categories`: the **first item is the card tag** on the portfolio (e.g. `Time Series`).
+- [ ] No `draft: true`. Drafts are left out of the feed.
+- [ ] `order` matches the file number, and the README track table has a row for the new post.
+- [ ] `quarto preview` looks right, outputs are cleared of warnings and progress bars.
+
 Writing rules:
 
 - **title**: put the keywords people search for first; aim for under 60 characters.

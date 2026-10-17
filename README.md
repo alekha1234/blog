@@ -22,9 +22,23 @@ Each topic folder is a track: numbered notebooks meant to be read in order.
 | 1 | **[Time Series Analysis in Python: Decomposition, STL & Stationarity Tests](https://alekha1234.github.io/blog/time-series/01-time-series-analysis-and-forecasting.html)** | Additive vs multiplicative decomposition, STL, stationarity tests (ADF, KPSS), transformations |
 | 2 | **[ARIMA & SARIMA in Python: AR, MA, ARMA Models on Apple Stock Data](https://alekha1234.github.io/blog/time-series/02-arima-sarima-models.html)** | AR, MA, ARMA, ARIMA and SARIMA with statsmodels, RMSE evaluation |
 
+## ✍️ Publishing a new notebook
+
+New posts appear automatically on the [portfolio](https://alekha1234.github.io/gujurialekha.github.io/#writing),
+which shows the latest 4 from this blog's feed. Before every push, check:
+
+1. The notebook is in a track folder, e.g. `time-series/03-….ipynb`.
+2. Its first Raw cell has `title`, `description` (under 155 characters; it's the portfolio card text),
+   a fixed `date` newer than the other posts, and `categories` (the first one is the card tag).
+3. It isn't marked `draft: true`.
+4. This README's track table has a row for it.
+
+The full checklist and front-matter template are in
+[PUBLISHING.md](PUBLISHING.md#checklist-before-you-push-a-new-notebook).
+
 ## 📖 Docs
 
-- [PUBLISHING.md](PUBLISHING.md): adding notebooks and topic tracks, front matter rules, SEO setup
+- [PUBLISHING.md](PUBLISHING.md): adding notebooks and topic tracks, front matter rules, the pre-push checklist, SEO setup
 - [DESIGN.md](DESIGN.md): the design system (colours, typography, components)
 
 ## 📬 Contact
